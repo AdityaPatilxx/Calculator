@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root{
+    --color-primary: #ADEFD1;
+    --color-secondary: #00203F;
+    --color-accent1: #D72638;
+    --ff: "Poppins", serif;
+    --transition: 0.3s ease-in-out;
+    --shadow: #00000030 0px 0px 10px 0px;
+    --shadowdark: #00000030 0px 5px 10px 5px;
+}
+
+html{
+    font-size: 16px;
+    background-color: var(--color-primary);
+}
+
+body{
+    font-family: var(--ff);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+
+
+
+
