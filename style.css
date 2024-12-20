@@ -27,7 +27,7 @@ input, button, textarea, select {
     font: inherit;
 }
 
-/* --------------------------------------------------- */
+/* ---------------------------------------------------------- */
 
 .main-section{
     display: flex;
@@ -47,7 +47,7 @@ input, button, textarea, select {
 }
 
 .display-container{
-    height: 30%;
+    height: 25%;
     background-color: var(--color-accent1);
     border-radius: 30px;
     border-bottom: 1px solid black;
@@ -60,6 +60,19 @@ input, button, textarea, select {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 15px;
+}
+
+
+.operator{
+    background-color: azure;
+}
+
+#erase{
+    background-color: rgb(206, 253, 253);
+}
+
+#start{
+    background-color: #dc143ca5;
 }
 
 .display-container{
@@ -79,7 +92,8 @@ button{
     border-radius: 25px;
     font-weight: 700;
     font-size: 25px;
-    border: none;
+    padding: 15px;
+    
 
     box-shadow: 3px 3px 0px 0px;
 }
