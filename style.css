@@ -2,17 +2,15 @@
 
 :root{
     --color-primary: #ADEFD1;
-    --color-secondary: #00203F;
-    --color-accent1: #D72638;
+    --color-secondary: #003f34;
+    --color-accent1: azure;
     --ff: "Poppins", serif;
     --transition: 0.3s ease-in-out;
-    --shadow: #00000030 0px 0px 10px 0px;
-    --shadowdark: #00000030 0px 5px 10px 5px;
 }
 
 html{
     font-size: 16px;
-    background-color: var(--color-primary);
+    background-color: rgba(140, 255, 228, 0.69);
 }
 
 body{
@@ -23,11 +21,68 @@ body{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    
+    /* outline: 2px solid white; */
 }
 
 input, button, textarea, select {
     font: inherit;
 }
+
+.main-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculator-body{
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    width: 400px;
+    height: 600px;
+    border-radius: 30px;
+    box-shadow: 5px 5px 0px 0px;
+    
+}
+
+.display-container{
+    height: 30%;
+    background-color: var(--color-accent1);
+    border-radius: 30px;
+    border-bottom: 1px solid black;
+}
+
+.button-container{
+    height: 70%;
+    padding: 25px;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+button{
+    background-color: var(--color-accent1);
+    color: var(--color-secondary);
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 25px;
+    border: none;
+
+    box-shadow: 3px 3px 0px 0px;
+}
+
+
+.calculator-body,
+button
+{
+    border: 1px solid black;
+}
+
+
+
+
 
 
 
