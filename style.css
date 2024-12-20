@@ -10,7 +10,7 @@
 
 html{
     font-size: 16px;
-    background-color: rgba(140, 255, 228, 0.69);
+    background-color: #9bff8cb0;
 }
 
 body{
@@ -21,13 +21,13 @@ body{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    
-    /* outline: 2px solid white; */
 }
 
 input, button, textarea, select {
     font: inherit;
 }
+
+/* --------------------------------------------------- */
 
 .main-section{
     display: flex;
@@ -62,8 +62,19 @@ input, button, textarea, select {
     gap: 15px;
 }
 
+.display-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.display{
+    padding: 20px;
+    font-size: 2rem;
+}
+
 button{
-    background-color: var(--color-accent1);
+    background-color: rgb(176, 232, 148);
     color: var(--color-secondary);
     border-radius: 25px;
     font-weight: 700;
