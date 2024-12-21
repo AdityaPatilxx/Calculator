@@ -81,9 +81,10 @@ input, button, textarea, select {
     align-items: flex-end;
 }
 
-.display{
+#display{
     padding: 20px;
-    font-size: 2rem;
+    font-size: 4rem;
+    font-weight: 500;
 }
 
 button{
