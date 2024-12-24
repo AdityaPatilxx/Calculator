@@ -79,18 +79,23 @@ input, button, textarea, select {
     flex-direction: column;
     align-items: flex-end;
     padding: 20px;
+    overflow: hidden;
 }
 
 #expression{
     font-size: 4rem;
     font-weight: 500;
     height: 100px;
+
+    
 }
 
 #answer{
     font-size: 2rem;
     height: 50px;
 }
+
+
 
 button{
     background-color: rgb(176, 232, 148);
