@@ -1,85 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-:root{
+/* Root Variables for Colors, Fonts, and Transitions */
+:root {
     --color-primary: #ADEFD1;
     --color-secondary: #003f34;
-    --color-accent1: azure;
-    --ff: "Poppins", serif;
+    --color-accent: #f0ffff;;
+    --color-button-bg:  #b0e894;
+    --color-button-hover: #c8e6a4;
+    --color-erase-bg: #cefdfd;
+    --color-start-bg: #dc143ca5;
+    --font-family: "Poppins", sans-serif;
     --transition: 0.3s ease-in-out;
 }
 
-html{
-    font-size: 16px;
-    background-color: #9bff8cb0;
-}
 
-body{
-    font-family: var(--ff);
-}
-
-*{
+/* General Resets */
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color:  #9bff8cb0;
+}
+
+html {
+    font-size: 16px;
 }
 
 input, button, textarea, select {
     font: inherit;
 }
 
-/* ---------------------------------------------------------- */
-
-.main-section{
+/* Main Section */
+.main-section {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.calculator-body{
+/* Calculator Body */
+.calculator-body {
     background-color: var(--color-primary);
     color: var(--color-secondary);
     width: 400px;
     border-radius: 30px;
+    border: 1px solid black;
     box-shadow: 5px 5px 0px 0px;
-    
+    overflow: hidden;
 }
 
-.display-container{
-
-    background-color: var(--color-accent1);
-    border-radius: 30px;
+/* Display Section */
+.display-container {
+    background-color: var(--color-accent);
     border-bottom: 1px solid black;
-}
-
-.button-container{
+    border-radius: 30px;
     padding: 20px;
-    
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 15px;
-}
-
-
-.operator{
-    background-color: azure;
-}
-#erase-all,
-#erase{
-    background-color: rgb(206, 253, 253);
-}
-
-#start{
-    background-color: #dc143ca5;
-    grid-column: 3 / 5 ;
-}
-
-.display-container{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding: 20px;
-    overflow: hidden;
 }
 
 #expression{
@@ -87,32 +69,75 @@ input, button, textarea, select {
     font-weight: 500;
     height: 100px;
 
-    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #answer{
     font-size: 2rem;
     height: 50px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
 
-button{
-    background-color: rgb(176, 232, 148);
+/* Button Container */
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+    gap: 15px;
+}
+
+/* Buttons */
+button {
+    background-color: var(--color-button-bg);
     color: var(--color-secondary);
     border-radius: 25px;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 1.6rem;
     padding: 15px;
-    box-shadow: 3px 3px 0px 0px;
-}
-
-
-.calculator-body,
-button
-{
     border: 1px solid black;
+    box-shadow: 3px 3px 0px 0px;
+    transition: background-color var(--transition), transform var(--transition);
+    cursor: pointer;
 }
+
+button:hover {
+    background-color: var(--color-button-hover);
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+
+/* Operator Buttons */
+.operator {
+    background-color: var(--color-accent);
+}
+
+/* Erase Buttons */
+#erase-all,
+#erase {
+    background-color: var(--color-erase-bg);
+}
+
+/* Equals Button */
+#start {
+    background-color: var(--color-start-bg);
+    grid-column: 3 / 5;
+}
+
+#start:hover {
+    background-color: #c5122f;
+}
+
 
 
 
