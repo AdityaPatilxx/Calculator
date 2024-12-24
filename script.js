@@ -23,57 +23,123 @@ function mathsOperation(firstNumber, secondNumber, operator) {
     }
 }
 
+function initializeCalculator() {
+    const buttonContainer = document.querySelector('.button-container');
+    buttonContainer.addEventListener('click', handleButtonClick);
+}
+
+let operatorCounter = 1;
+let lastInputWasOperator = false;
+
+const expressionElement = document.querySelector('#expression')
+const answerElement = document.querySelector('#answer')
 
 
-let operatorCounter = 1
-const expression = document.querySelector('#expression')
-const answer = document.querySelector('#answer')
-function display() {
-    const buttonContainer = document.querySelector('.button-container')
+// function display() {
+//     const buttonContainer = document.querySelector('.button-container')
 
-    buttonContainer.addEventListener('click', (event) => {
-        let target = event.target
-        if (target.className == 'numbers') {
-            (expression.textContent == '0')
-                ? expression.textContent = target.textContent
-                : expression.textContent = expression.textContent + target.textContent
+//     buttonContainer.addEventListener('click', (event) => {
+//         let target = event.target
+//         if (target.className == 'numbers') {
+//             (expressionElement.textContent == '0')
+//                 ? expressionElement.textContent = target.textContent
+//                 : expressionElement.textContent = expressionElement.textContent + target.textContent
 
-            answer.textContent = operate(expression.textContent)
-        }
-        else if (target.className == 'operator' && operatorCounter < 2) {
-            expression.textContent = expression.textContent + target.textContent
-            answer.textContent = operate(expression.textContent)
-            operatorCounter++
-        }
-        else if (target.id == 'erase') {
-            erase('one')
-            answer.textContent = operate(expression.textContent)
-        }
-        else if (target.id == 'erase-all') {
-            erase('all')
-            answer.textContent = operate(expression.textContent)
-            operatorCounter = 1
-        }
-        else if (target.id == 'start') {
-            expression.textContent = operate(expression.textContent)
-            operatorCounter = 1
-        }
-    })
+//             answerElement.textContent = operate(expressionElement.textContent)
+//         }
+//         else if (target.className == 'operator' && operatorCounter < 2) {
+//             expressionElement.textContent = expressionElement.textContent + target.textContent
+//             answerElement.textContent = operate(expressionElement.textContent)
+//             operatorCounter++
+//         }
+//         else if (target.id == 'erase') {
+//             erase('one')
+//             answerElement.textContent = operate(expressionElement.textContent)
+//         }
+//         else if (target.id == 'erase-all') {
+//             erase('all')
+//             answerElement.textContent = operate(expressionElement.textContent)
+//             operatorCounter = 1
+//         }
+//         else if (target.id == 'start') {
+//             expressionElement.textContent = operate(expressionElement.textContent)
+//             operatorCounter = 1
+//         }
+//     })
+// }
+
+function updateAnswer() {
+    if (expressionElement.textContent == '') {
+        answerElement.textContent = ''
+    }
+    else {
+        answerElement.textContent = operate(expressionElement.textContent)
+    }
+
+}
+
+function handleButtonClick(event) {
+    const target = event.target;
+
+    if (target.className == 'numbers') {
+        handleNumberInput(target.textContent);
+    }
+    else if (target.className == 'operator') {
+        handleOperatorInput(target.textContent);
+    }
+    else if (target.id === 'erase') {
+        erase('one');
+    }
+    else if (target.id === 'erase-all') {
+        erase('all');
+    }
+    else if (target.id === 'start') {
+        finalizeExpression();
+    }
+}
+
+function handleNumberInput(value) {
+    if (expressionElement.textContent === '0') {
+        expressionElement.textContent = value;
+    }
+    else {
+        // Check for duplicate decimals in the current number
+        const lastNumber = expressionElement.textContent.split(operatorPattern).pop();
+
+        // if (value === '.' && lastNumber.includes('.')) {
+        //     return; // Prevent adding another decimal point
+        // }
+
+        expressionElement.textContent += value;
+        updateAnswer()
+    }
+    lastInputWasOperator = false;
+    answerElement.textContent = operate(expressionElement.textContent);
+}
+
+function handleOperatorInput(operator) {
+    const lastChar = expressionElement.textContent.slice(-1);
+    if (operatorCounter < 2 && !operatorPattern.test(lastChar)) {
+        expressionElement.textContent += operator;
+        operatorCounter++;
+        lastInputWasOperator = true;
+    }
 }
 
 function erase(flag) {
     if (flag == 'all') {
-        expression.textContent = '0'
-        answer.textContent = ''
+        expressionElement.textContent = '0'
+        answerElement.textContent = ''
     }
     else if (flag == 'one') {
-        let lastErasedCharacter = expression.textContent.at(-1)
+        let lastErasedCharacter = expressionElement.textContent.at(-1)
         console.log(lastErasedCharacter)
         if (operatorPattern.test(lastErasedCharacter)) {
             operatorCounter = 1
         }
-        expression.textContent = expression.textContent.slice(0, -1);
+        expressionElement.textContent = expressionElement.textContent.slice(0, -1);
+        updateAnswer()
     }
 }
 
-display()
+initializeCalculator();
