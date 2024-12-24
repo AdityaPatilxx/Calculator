@@ -1,39 +1,25 @@
+
 const operatorPattern = /[+\-×÷^]/g;
 
-
-function operate(string) {
-
-    let numberArray = string.match(/(\d+(\.\d+)?)/g);
-    let operatorArray = string.match(operatorPattern);
+function operate(expression) {
+    const numberArray = expression.match(/(\d+(\.\d+)?)/g);
+    const operatorArray = expression.match(operatorPattern);
 
     if (numberArray.length < 2 || operatorArray.length < 1) {
-        return numberArray[0]
+        return numberArray[0];
     }
 
-    return mathsOperation(numberArray[0], numberArray[1], operatorArray[0])
+    return mathsOperation(parseFloat(numberArray[0]), parseFloat(numberArray[1]), operatorArray[0]);
 }
 
 function mathsOperation(firstNumber, secondNumber, operator) {
-
     switch (operator) {
-        case '+':
-            return firstNumber + secondNumber
-
-        case '-':
-            return firstNumber - secondNumber
-
-        case '×':
-            return firstNumber * secondNumber
-
-        case '÷':
-            return firstNumber / secondNumber
-
-        case '^':
-            return Math.pow(firstNumber, secondNumber)
-
-        default:
-            return 'error'
-
+        case '+': return firstNumber + secondNumber;
+        case '-': return firstNumber - secondNumber;
+        case '×': return firstNumber * secondNumber;
+        case '÷': return secondNumber !== 0 ? firstNumber / secondNumber : 'Error';
+        case '^': return Math.pow(firstNumber, secondNumber);
+        default: return 'Error';
     }
 }
 
