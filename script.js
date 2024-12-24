@@ -35,39 +35,6 @@ const expressionElement = document.querySelector('#expression')
 const answerElement = document.querySelector('#answer')
 
 
-// function display() {
-//     const buttonContainer = document.querySelector('.button-container')
-
-//     buttonContainer.addEventListener('click', (event) => {
-//         let target = event.target
-//         if (target.className == 'numbers') {
-//             (expressionElement.textContent == '0')
-//                 ? expressionElement.textContent = target.textContent
-//                 : expressionElement.textContent = expressionElement.textContent + target.textContent
-
-//             answerElement.textContent = operate(expressionElement.textContent)
-//         }
-//         else if (target.className == 'operator' && operatorCounter < 2) {
-//             expressionElement.textContent = expressionElement.textContent + target.textContent
-//             answerElement.textContent = operate(expressionElement.textContent)
-//             operatorCounter++
-//         }
-//         else if (target.id == 'erase') {
-//             erase('one')
-//             answerElement.textContent = operate(expressionElement.textContent)
-//         }
-//         else if (target.id == 'erase-all') {
-//             erase('all')
-//             answerElement.textContent = operate(expressionElement.textContent)
-//             operatorCounter = 1
-//         }
-//         else if (target.id == 'start') {
-//             expressionElement.textContent = operate(expressionElement.textContent)
-//             operatorCounter = 1
-//         }
-//     })
-// }
-
 function updateAnswer() {
     if (expressionElement.textContent == '') {
         answerElement.textContent = ''
@@ -126,20 +93,25 @@ function handleOperatorInput(operator) {
     }
 }
 
+
 function erase(flag) {
-    if (flag == 'all') {
-        expressionElement.textContent = '0'
-        answerElement.textContent = ''
-    }
-    else if (flag == 'one') {
-        let lastErasedCharacter = expressionElement.textContent.at(-1)
-        console.log(lastErasedCharacter)
-        if (operatorPattern.test(lastErasedCharacter)) {
-            operatorCounter = 1
+    if (flag === 'all') {
+        expressionElement.textContent = '0';
+        answerElement.textContent = '';
+        operatorCounter = 1;
+    } else if (flag === 'one') {
+        const lastChar = expressionElement.textContent.slice(-1);
+        if (operatorPattern.test(lastChar)) {
+            operatorCounter = 1;
         }
-        expressionElement.textContent = expressionElement.textContent.slice(0, -1);
+        expressionElement.textContent = expressionElement.textContent.slice(0, -1) || '0';
         updateAnswer()
     }
+}
+
+function finalizeExpression() {
+    expressionElement.textContent = operate(expressionElement.textContent);
+    operatorCounter = 1;
 }
 
 initializeCalculator();
