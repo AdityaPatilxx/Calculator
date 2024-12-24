@@ -40,22 +40,20 @@ input, button, textarea, select {
     background-color: var(--color-primary);
     color: var(--color-secondary);
     width: 400px;
-    height: 600px;
     border-radius: 30px;
     box-shadow: 5px 5px 0px 0px;
     
 }
 
 .display-container{
-    height: 25%;
+
     background-color: var(--color-accent1);
     border-radius: 30px;
     border-bottom: 1px solid black;
 }
 
 .button-container{
-    height: 70%;
-    padding: 25px;
+    padding: 20px;
     
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -66,25 +64,32 @@ input, button, textarea, select {
 .operator{
     background-color: azure;
 }
-
+#erase-all,
 #erase{
     background-color: rgb(206, 253, 253);
 }
 
 #start{
     background-color: #dc143ca5;
+    grid-column: 3 / 5 ;
 }
 
 .display-container{
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
     align-items: flex-end;
+    padding: 20px;
 }
 
-#display{
-    padding: 20px;
+#expression{
     font-size: 4rem;
     font-weight: 500;
+    height: 100px;
+}
+
+#answer{
+    font-size: 2rem;
+    height: 50px;
 }
 
 button{
@@ -94,8 +99,6 @@ button{
     font-weight: 700;
     font-size: 25px;
     padding: 15px;
-    
-
     box-shadow: 3px 3px 0px 0px;
 }
 
