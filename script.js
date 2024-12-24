@@ -73,9 +73,9 @@ function handleNumberInput(value) {
         // Check for duplicate decimals in the current number
         const lastNumber = expressionElement.textContent.split(operatorPattern).pop();
 
-        // if (value === '.' && lastNumber.includes('.')) {
-        //     return; // Prevent adding another decimal point
-        // }
+        if (value === '.' && lastNumber.includes('.')) {
+            return; // Prevent adding another decimal point
+        }
 
         expressionElement.textContent += value;
         updateAnswer()
