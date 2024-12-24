@@ -38,12 +38,13 @@ input, button, textarea, select {
 .main-section {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+    margin-bottom: 20px;
 }
 
 /* Calculator Body */
 .calculator-body {
+    margin-top: 20px;
     background-color: var(--color-primary);
     color: var(--color-secondary);
     width: 400px;
@@ -98,7 +99,7 @@ button {
     color: var(--color-secondary);
     border-radius: 25px;
     font-weight: 700;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     padding: 15px;
     border: 1px solid black;
     box-shadow: 3px 3px 0px 0px;
@@ -138,9 +139,12 @@ button:active {
     background-color: #c5122f;
 }
 
-
-
-
+footer{
+    display: flex;
+    justify-content: center;
+    
+    height: 40px;
+}
 
 
 
